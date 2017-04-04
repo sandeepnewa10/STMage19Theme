@@ -1,0 +1,114 @@
+<?php
+/**
+ * Homepage Product Columns
+ * 3 Columns with variety of criteria
+ * @see Mage_Catalog_Block_Product_Homeproductcolumns
+ */
+?>
+<?php $item_count = 3; ?>
+
+<div class="footer-widget-wrapper">
+        <div class="container">
+                <div class="row"> 
+                        <!-- NEW PRODUCTS LIST START -->
+                        <div class="col-md-4 col-sm-12  col-xs-12">
+                                <div class="block block-list block-viewed">
+                                        <div class="block-title"> <strong><span><?php echo $this->__('New Products') ?></span></strong> </div>
+                                        <div class="block-content">
+                                                <?php $products = $this->getNewCollection(); $i=0; ?>
+                                                <?php if ((0 < $products->getSize()) && ($i<$item_count) ) { $i++; ?>
+                                                <div class="bestseller-wrapper">
+                                                        <?php foreach ($products as $p) { ?>
+                                                        <div class="inner-item">
+                                                                <div class="bestseller-left-content"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName()) ?>" class="product-image"> <img src="<?php echo $this->helper('catalog/image')->init($p, 'small_image')->resize(125) ?>" width="125" height="125" alt="<?php echo $this->htmlEscape($p->getName()) ?>" /> </a> </div>
+                                                                <div class="besteller-right-content">
+                                                                        <div class="product-item-details">
+                                                                                <h3 class="product-name"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName())?>"> <?php echo $this->htmlEscape($p->getName()) ?> </a> </h3>
+                                                                        </div>
+                                                                        <div class="price-box"> <?php echo $this->getPriceHtml($p, true) ?> </div>
+                                                                        <div class="box-hover">
+                                                                                <?php if($p->isSaleable()): ?>
+                                                                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($p) ?>')"> <span><span><?php echo $this->__('Add to Cart') ?></span></span> </button>
+                                                                                <?php else: ?>
+                                                                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                                                                <?php endif; ?>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <?php } ?>
+                                                </div>
+                                        </div>
+                                        <?php } ?>
+                                </div>
+                        </div>
+                        
+                        <!-- NEW PRODUCTS LIST END --> 
+                        
+                        <!-- BEST SELLERS LIST START -->
+                        <div class="col-md-4 col-sm-12  col-xs-12">
+                                <div class="block block-list block-viewed">
+                                        <div class="block-title"> <strong><span><?php echo $this->__('Best Sellers') ?></span></strong> </div>
+                                        <div class="block-content">
+                                                <?php $products = $this->getSpecialsCollection(); $i=0; ?>
+                                                <?php if (0 < $products->getSize() && ($i<$item_count)) { $i++; ?>
+                                                <div class="bestseller-wrapper">
+                                                        <?php foreach ($products as $p) { ?>
+                                                        <div class="inner-item">
+                                                                <div class="bestseller-left-content"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName()) ?>" class="product-image"> <img src="<?php echo $this->helper('catalog/image')->init($p, 'small_image')->resize(125) ?>" width="125" height="125" alt="<?php echo $this->htmlEscape($p->getName()) ?>" /> </a> </div>
+                                                                <div class="besteller-right-content">
+                                                                        <div class="product-item-details">
+                                                                                <h3 class="product-name"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName())?>"> <?php echo $this->htmlEscape($p->getName()) ?> </a> </h3>
+                                                                        </div>
+                                                                        <div class="price-box"> <?php echo $this->getPriceHtml($p, true) ?> </div>
+                                                                        <div class="box-hover">
+                                                                                <?php if($p->isSaleable()): ?>
+                                                                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($p) ?>')"> <span><span><?php echo $this->__('Add to Cart') ?></span></span> </button>
+                                                                                <?php else: ?>
+                                                                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                                                                <?php endif; ?>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <?php } ?>
+                                                </div>
+                                                <?php } ?>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- BEST SELLERS LIST END --> 
+                        
+                        <!-- SPECIAL LIST START -->
+                        <div class="col-md-4 col-sm-12  col-xs-12 ">
+                                <div class="block block-list block-viewed">
+                                        <div class="block-title"> <strong><span><?php echo $this->__('Specials') ?></span></strong> </div>
+                                        <div class="block-content"  style="display: none;">
+                                                <?php $products = $this->getSpecialsCollection(); $i=0; ?>
+                                                <?php if (0 < $products->getSize() && ($i<$item_count)) {  $i++; ?>
+                                                <div class="bestseller-wrapper">
+                                                        <?php foreach ($products as $p) { ?>
+                                                        <div class="inner-item">
+                                                                <div class="bestseller-left-content"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName()) ?>" class="product-image"> <img src="<?php echo $this->helper('catalog/image')->init($p, 'small_image')->resize(125) ?>" width="125" height="125" alt="<?php echo $this->htmlEscape($p->getName()) ?>" /> </a> </div>
+                                                                <div class="besteller-right-content">
+                                                                        <div class="product-item-details">
+                                                                                <h3 class="product-name"> <a href="<?php echo $p->getProductUrl() ?>" title="<?php echo $this->htmlEscape($p->getName())?>"> <?php echo $this->htmlEscape($p->getName()) ?> </a> </h3>
+                                                                        </div>
+                                                                        <div class="price-box"> <?php echo $this->getPriceHtml($p, true) ?> </div>
+                                                                        <div class="box-hover">
+                                                                                <?php if($p->isSaleable()): ?>
+                                                                                <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($p) ?>')"> <span><span><?php echo $this->__('Add to Cart') ?></span></span> </button>
+                                                                                <?php else: ?>
+                                                                                <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                                                                                <?php endif; ?>
+                                                                        </div>
+                                                                </div>
+                                                        </div>
+                                                        <?php } ?>
+                                                </div>
+                                                <?php } ?>
+                                        </div>
+                                </div>
+                        </div>
+                        <!-- SPECIAL LIST END --> 
+                </div>
+        </div>
+</div>
